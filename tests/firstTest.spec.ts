@@ -103,7 +103,16 @@ test('Extracting values from the page', async ({page}) => {
     const emailFieldAttribute = await emailField.getAttribute('placeholder');
     console.log(emailFieldAttribute); // This will log the value of the placeholder attribute of the email field
     expect(emailFieldAttribute).toBe('Email');
-    
+
+})
+
+test('Assertions', async ({page}) => {
+    //General assertions
+    const value = 5 
+    expect(value).toBe(5);
+    expect(value).not.toBe(6);
+    expect(value).toBeGreaterThan(4);
+    expect(value).toBeLessThan(6);
 })
 
 
