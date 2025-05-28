@@ -113,6 +113,22 @@ test('Assertions', async ({page}) => {
     expect(value).not.toBe(6);
     expect(value).toBeGreaterThan(4);
     expect(value).toBeLessThan(6);
+
+    const basicFormButton = page.locator('nb-card').filter({hasText: 'Basic form'}).getByRole('button', {name: 'Submit'}).first();
+    //Assertions on elements
+    await expect(basicFormButton).toBeVisible(); // Check if the button is visible
+    await expect(basicFormButton).toBeEnabled(); // Check if the button is enabled
+    await expect(basicFormButton).toHaveText('Submit'); // Check if the button has the text 'Submit'
+
+    //Locator assertions
+    const inlineForm = page.locator('nb-card').filter({hasText: 'Basic form'});
+    await expect(inlineForm).toContainText('Basic form'); // Check if the inline form contains the text 'Basic form'
+    await expect(inlineForm).toHaveCount(1); // Check if there is only one inline form
+    await expect(inlineForm.getByRole('textbox', {name: 'Email'}).first()).toHaveValue(''); // Check if the email field is empty
+
+    //Soft assertions
+    await expect.soft(basicFormButton).toBeVisible(); // This will not fail the test if the assertion fails, it will just log the failure
+    await expect.soft(basicFormButton).toBeEnabled(); // This will not fail the test if the assertion fails, it will just log the failure
 })
 
 
