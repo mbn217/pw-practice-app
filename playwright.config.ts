@@ -13,6 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   //timeout: 10 * 1000, // Set a global timeout of 30 seconds for each test
+  globalTimeout: 60 * 1000, // Set a global timeout of 60 seconds for all tests
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -31,6 +32,8 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    //actionTimeout: 10 * 1000, // Set a timeout for each action (e.g., click, type) to 10 seconds
+    //navigationTimeout: 30 * 1000, // Set a timeout for navigation actions to 30 seconds
   },
 
   /* Configure projects for major browsers */

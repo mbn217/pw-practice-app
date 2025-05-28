@@ -45,6 +45,8 @@ test('alternative waiting', async ({page}) => {
 //Default timeout is 30 seconds, you can change it in the playwright.config.ts file
 //You can also set a timeout for a specific test using the timeout option
 test('timeouts', async ({page}) => {
+    //test.setTimeout(60000); // Set a timeout for this test to 60 seconds
+    //test.slow(); // Mark this test as slow it increases 3 times the timeout
     const successButton = page.locator('.bg-success');
 
     await successButton.click();
